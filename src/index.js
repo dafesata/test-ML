@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import "../src/Pages/index/index.sass"
+import Index from './Pages/index';
+import store from '../src/Reducers/store'
+
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import {  Route, Switch, BrowserRouter } from 'react-router-dom';
+import Search from './Pages/search/search';
+import Detail from './Pages/detail/detail';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <Switch  >
+        <Route exact path="/" >
+            <Index/>
+        </Route>
+      </Switch>
+      <Switch  >
+        <Route path="/items">
+          <Search/>
+        </Route>
+      </Switch>
+      <Switch  >
+        <Route path="/items/:id" >
+          <Detail/>
+        </Route>
+      </Switch>
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
