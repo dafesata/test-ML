@@ -19,12 +19,27 @@ app.get('/api/items/:id',(req,res)=> {
 
 function getItemInformation(id){
   const request = require('request');
+  let responseObj = {
+    'author':{
+      "name" : "Daniel",
+      "lastname": "Salas"
+    }
+  };
   const response= request('https://api.mercadolibre.com/items/'+id, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       return body; // Show the HTML for the Google homepage. 
     }
   });
   
-  return response;
+  responseObj.categories = getCategories(response.filters);
+  return responseObjs;
  
+}
+
+function getCategories(filters){
+  let categories = []
+  filters[0].values.map((filter)=>{
+    categories.push(filter.name);
+  })
+  return categories;
 }
