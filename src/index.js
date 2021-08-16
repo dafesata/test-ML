@@ -19,12 +19,12 @@ ReactDOM.render(
         </Route>
       </Switch>
       <Switch  >
-        <Route path="/items">
+        <Route exact path="/items">
           <Search/>
         </Route>
       </Switch>
       <Switch  >
-        <Route path="/items/:id" >
+        <Route exact path="/items/:id" >
           <Detail/>
         </Route>
       </Switch>

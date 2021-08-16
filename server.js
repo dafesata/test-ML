@@ -1,7 +1,9 @@
 const express = require('express'); 
 const app = express(); 
+const cors = require('cors');
 const port = process.env.PORT || 5000; 
 
+app.use(cors());
 app.listen(port, () => console.log(`Listening on port ${port}`)); 
 
 function httpGet(theUrl){
@@ -126,6 +128,7 @@ function getItemInformation(id){
 
   responseObj.item = parseItem(item);
   responseObj.item.description = description.plain_text;
+  responseObj.item.sold_quantity= item.sold_quantity;
   responseObj.item.address = item.seller_address.state.name;
   categories = getCategory(item.category_id);
   responseObj.breadcrumb = []

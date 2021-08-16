@@ -8,9 +8,14 @@ function Index(){
         document.title ="Buscador"
     })
 
+    function handleSearch(){
+        return null;
+     }
+ 
+
     return(
-        <div className="grayBackground">
-        <Navbar search=""/>
+        <div className="grayBackgroundIndex">
+        <Navbar search="" RequestApi={handleSearch}/>
         </div>
     )
 }
